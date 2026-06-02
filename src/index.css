@@ -3,3 +3,27 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  background-image: url('/backg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: aliceblue;
+}
+
+@media (width <= 1000px){
+  body{
+  background-image: url('/mobbg.webp');
+
+}
+}
+
+main{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}

@@ -1,35 +1,36 @@
-import './App.module.css'
+import s from './App.module.css'
 import { useEffect, useState } from 'react'
 import { api } from './constants/api'
+
+import logo from '/logo.webp'
 
 
 function App() {
   const [data, setData] = useState([])
+  const [page, setPage] = useState()
 
 
   useEffect(() => {
 
-    api.get('/character').then((response) => {
+    api.get(`/character/?page=${page}`).then((response) => {
       setData(response.data.results)
     }).catch((error) => {
       console.error("Caiu foi tudo meu fi")
     })
-  }, [])
+  }, [page])
 
 
   return (
     <>
-      <img src="" alt="" />
+    <div>
+      <label>Digite uma página</label>
+      <input min={1} max={42} type="number" placeholder='1/42' value={page} onChange={(e) => setPage(Number(e.target.value))}/>
+    </div>
+      <img className={s.logo} src={logo} alt="Logo" />
       <main>
         {data.map((item, index) => {
         return(
-          <div key={index}>
-          <img src={item.image} alt={item.name} />
-          <h4>Name: {item.name}</h4>
-          <p>Species: {item.species}</p>
-          {item.status === "Dead" ? "Status: 🧟" : item.status === "Alive" ? "Status: ❤️" : <p>Status: {item.status}  </p>} 
-          <p>Origin: {item.origin.name}</p>
-        </div>
+          <Card key={item.id} unico={item.id} imagem={item.image} nome={item.name} espécie={item.species} origem={item.origin.name}/>
         )
         })}
       </main>
