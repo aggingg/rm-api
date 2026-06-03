@@ -15,7 +15,7 @@ body{
 
 @media (width <= 1000px){
   body{
-  background-image: url('/mobbg.webp');
+  background-image: url('/mobbg.jpg');
 
 }
 }
@@ -25,5 +25,7 @@ main{
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 20px;
+  width: 125px;
+  text-align: center;
 }
